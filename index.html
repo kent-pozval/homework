@@ -1,121 +1,252 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Домашняя работа</title>
-    <link rel="shortcut icon" href="src/logo.ico" type="image/x-icon">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&family=Rubik:wght@500&display=swap"
-          rel="stylesheet">
-    <link rel="stylesheet" href="src/style.css">
+    <title>2x2x - Ванильный Minecraft сервер</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
-<body id="body">
-<div class="overlay" id="overlay"></div>
-<div class="layout">
-    <div class="burger" id="burger">
-        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
-            <g id="SVGRepo_iconCarrier">
-                <path d="M4 18L20 18" stroke="#DAF765" stroke-width="2" stroke-linecap="round"></path>
-                <path d="M4 12L20 12" stroke="#DAF765" stroke-width="2" stroke-linecap="round"></path>
-                <path d="M4 6L20 6" stroke="#DAF765" stroke-width="2" stroke-linecap="round"></path>
-            </g>
-        </svg>
-    </div>
-    <aside class="sidebar" id="sidebar">
-        <div class="sidebar__inner">
-            <div class="logo">
-                <svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <g clip-path="url(#clip0_513_74730)">
-                        <path d="M46.17 -0.257004H3.83C1.57281 -0.257004 -0.257 1.57281 -0.257 3.83V46.17C-0.257 48.4272 1.57281 50.257 3.83 50.257H46.17C48.4272 50.257 50.257 48.4272 50.257 46.17V3.83C50.257 1.57281 48.4272 -0.257004 46.17 -0.257004Z"
-                              fill="#DAF765"/>
-                        <path d="M24.375 38.4H42.461L27.441 3.1585H20.4355C20.4355 3.1585 6.7895 35.881 1.1945 49.294C2.015 50.0275 3.0945 50.257 3.6945 50.257H8.8445L23.954 13.07L32.0465 32.8285H24.375V38.4Z"
-                              fill="#323843"/>
-                    </g>
-                    <defs>
-                        <clipPath id="clip0_513_74730">
-                            <rect width="50" height="50" fill="white"/>
-                        </clipPath>
-                    </defs>
-                </svg>
-            </div>
-            <div class="sidebar__user">
-                <div class="sidebar__name">Виталий Валерьевич</div>
-                <div class="sidebar__text">Веселый школьник</div>
-            </div>
-            <div class="sidebar__tabs">
-                <div class="sidebar__item">
-                    <button class="sidebar__button active" id="tasks">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-                            <g clip-path="url(#clip0_704_74543)">
-                                <path d="M17.7083 20H2.29167C1.0275 20 0 18.9725 0 17.7083V2.29167C0 1.0275 1.0275 0 2.29167 0H17.7083C18.9725 0 20 1.0275 20 2.29167V17.7083C20 18.9725 18.9725 20 17.7083 20ZM2.29167 1.25C1.7175 1.25 1.25 1.7175 1.25 2.29167V17.7083C1.25 18.2825 1.7175 18.75 2.29167 18.75H17.7083C18.2825 18.75 18.75 18.2825 18.75 17.7083V2.29167C18.75 1.7175 18.2825 1.25 17.7083 1.25H2.29167Z"
-                                      fill="black"/>
-                                <path d="M6.04167 13.125C5.88167 13.125 5.72167 13.0642 5.6 12.9417L3.1 10.4417C2.85583 10.1975 2.85583 9.80167 3.1 9.5575L5.6 7.0575C5.84417 6.81333 6.24 6.81333 6.48417 7.0575C6.72833 7.30167 6.72833 7.6975 6.48417 7.94167L4.42583 10L6.48417 12.0583C6.72833 12.3025 6.72833 12.6983 6.48417 12.9425C6.36167 13.0642 6.20167 13.125 6.04167 13.125Z"
-                                      fill="black"/>
-                                <path d="M8.95833 14.1667C8.9 14.1667 8.84 14.1583 8.78167 14.1417C8.45083 14.0442 8.26083 13.6967 8.35833 13.3658L10.4417 6.28251C10.5392 5.95084 10.8892 5.76417 11.2175 5.85917C11.5483 5.95667 11.7383 6.30417 11.6408 6.63501L9.5575 13.7183C9.47833 13.9908 9.22833 14.1667 8.95833 14.1667Z"
-                                      fill="black"/>
-                                <path d="M13.9583 13.125C13.7983 13.125 13.6383 13.0642 13.5167 12.9417C13.2725 12.6975 13.2725 12.3017 13.5167 12.0575L15.575 9.99916L13.5167 7.94083C13.2725 7.69666 13.2725 7.30083 13.5167 7.05666C13.7608 6.81249 14.1567 6.81249 14.4008 7.05666L16.9008 9.55666C17.145 9.80083 17.145 10.1967 16.9008 10.4408L14.4008 12.9408C14.2783 13.0642 14.1183 13.125 13.9583 13.125Z"
-                                      fill="black"/>
-                            </g>
-                            <defs>
-                                <clipPath id="clip0_704_74543">
-                                    <rect width="20" height="20" fill="white"/>
-                                </clipPath>
-                            </defs>
-                        </svg>
-                        <span>Домашние задания</span></button>
+<body>
+    <!-- Хедер -->
+    <header class="main-header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <span class="logo-icon">⚡</span>
+                    <span class="logo-text">2x2x</span>
                 </div>
-                <div class="sidebar__item">
-                    <button class="sidebar__button" id="diplom">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                            <g clip-path="url(#clip0_704_74553)">
-                                <path d="M23.2628 10.5971C23.7176 10.365 24 9.90375 24 9.39337C24 8.883 23.7176 8.42175 23.2628 8.18962L12.6135 2.75362C12.2291 2.55824 11.7705 2.55787 11.3854 2.75399L0.736875 8.19C0.282375 8.42175 0 8.883 0 9.39337C0 9.90375 0.282375 10.365 0.736875 10.5971L4.89038 12.7177V18.2074C4.89038 19.8154 8.412 21.393 12 21.393C15.5884 21.393 19.1096 19.815 19.1096 18.2074V12.7174L21.4609 11.517V15.8017L20.901 17.2305C20.7409 17.6389 20.7934 18.0994 21.0405 18.4616C21.2876 18.8246 21.6979 19.041 22.1366 19.041C22.5754 19.041 22.9852 18.8246 23.2324 18.462C23.4795 18.099 23.532 17.6385 23.3719 17.2301L22.8124 15.8021V10.827L23.2628 10.5971ZM17.7623 18.1721C17.6198 18.6375 15.3491 20.0419 12 20.0419C8.65088 20.0419 6.38025 18.6375 6.2415 18.2074V12.3037L6.23887 12.3019C6.23812 12.057 6.1065 11.8207 5.87325 11.7019L1.3515 9.39337L12 3.95737L22.6489 9.39337L12 14.8294L5.87325 11.7019C5.54063 11.5331 4.6695 11.6674 4.5 12C4.33012 12.3322 4.55813 12.5479 4.89038 12.7177L11.3857 16.0331C11.5781 16.1314 11.7889 16.1805 12 16.1805C12.2107 16.1805 12.4222 16.1314 12.6146 16.0331L17.7593 13.407L17.7623 18.1721Z"
-                                      fill="black"/>
-                            </g>
-                            <defs>
-                                <clipPath id="clip0_704_74553">
-                                    <rect width="24" height="24" fill="white"/>
-                                </clipPath>
-                            </defs>
-                        </svg>
-                        <span>Дипломный проект</span></button>
-                </div>
+                <nav class="nav-menu">
+                    <a href="#about" class="nav-link">О сервере</a>
+                    <a href="#how-to-join" class="nav-link">Как подключиться</a>
+                    <a href="#features" class="nav-link">Особенности</a>
+                    <a href="https://discord.gg/bPBe5sG3" class="nav-link discord-link" target="_blank">
+                        <i class="fab fa-discord"></i> Discord
+                    </a>
+                </nav>
+                <button class="menu-toggle" id="menuToggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
             </div>
         </div>
+    </header>
 
-    </aside>
-    <div class="content">
+    <!-- Мобильное меню -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-content">
+            <a href="#about" class="mobile-nav-link">О сервере</a>
+            <a href="#how-to-join" class="mobile-nav-link">Как подключиться</a>
+            <a href="#features" class="mobile-nav-link">Особенности</a>
+            <a href="https://discord.gg/bPBe5sG3" class="mobile-nav-link discord-link" target="_blank">
+                <i class="fab fa-discord"></i> Присоединиться к Discord
+            </a>
+        </div>
+    </div>
+
+    <!-- Герой секция -->
+    <section class="hero">
+        <div class="hero-background">
+            <div class="particles" id="particles"></div>
+        </div>
         <div class="container">
-            <div class="content__block" id="tasksBlock">
-                <div class="content__title">Домашние задания</div>
-                <ul class="content__list">
-                    <li class="content__list-item">
-                        <a href="arokenteath/index.html">Урок 1</a>
-                    </li>
-                    <li class="content__list-item">
-                        <a href="arokenteath/index.html">Урок 2</a>
-                    </li>
-                </ul>
-            </div>
-            <div class="content__block hidden" id="diplomBlock">
-                <div class="content__title">Дипломный проект</div>
-                <div class="content__list-diplom">
-                    <a href="ПАПКА-С-НОМЕРОМ-УРОКА">Ссылка на ДЗ</a>
-                </div>
-                <div class="content__decor">
-                    <div class="content__decor-text">Давай проверим, чему ты научился!</div>
-                    <div class="content__decor-img">
-                        <img src="src/decor.png" alt="decor">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    <span class="title-accent">2x2x</span>
+                    <span class="title-sub">Ванильный Minecraft</span>
+                </h1>
+                <p class="hero-description">Присоединяйся к удивительному сообществу! Сезон 1 в самом разгаре.</p>
+                
+                <div class="server-info-card">
+                    <div class="server-ip">
+                        <span class="ip-label">Адрес сервера:</span>
+                        <div class="ip-value">
+                            <code>phobos.minecraft-hosting.net:25405</code>
+                            <button class="copy-btn" onclick="copyIP()">
+                                <i class="far fa-copy"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="server-versions">
+                        <span class="version-tag java">Java Edition</span>
+                        <span class="version-tag bedrock">Bedrock Edition</span>
                     </div>
                 </div>
+
+                <div class="hero-actions">
+                    <a href="https://discord.gg/bPBe5sG3" class="cta-button discord-cta" target="_blank">
+                        <i class="fab fa-discord"></i>
+                        Присоединиться к Discord
+                    </a>
+                    <button class="cta-button secondary" onclick="scrollToSection('how-to-join')">
+                        Как подключиться
+                    </button>
+                </div>
             </div>
         </div>
-    </div>
-</div>
-<script src="src/index.js"></script>
+    </section>
+
+    <!-- О сервере -->
+    <section id="about" class="section about-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Добро пожаловать на 2x2x!</h2>
+                <p>Уникальный ванильный опыт с дружелюбным сообществом</p>
+            </div>
+            <div class="about-grid">
+                <div class="about-card">
+                    <div class="about-icon">🎮</div>
+                    <h3>Чистая ванилла</h3>
+                    <p>Наслаждайся классическим Minecraft без модов и плагинов, которые меняют геймплей</p>
+                </div>
+                <div class="about-card">
+                    <div class="about-icon">🏘️</div>
+                    <h3>Города и сообщества</h3>
+                    <p>Создавай свои города, заключай союзы и развивай экономику вместе с другими игроками</p>
+                </div>
+                <div class="about-card">
+                    <div class="about-icon">🤝</div>
+                    <h3>Активная администрация</h3>
+                    <p>Наша команда всегда готова помочь и поддержать дружескую атмосферу на сервере</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Как подключиться -->
+    <section id="how-to-join" class="section join-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Как присоединиться</h2>
+                <p>Всего несколько простых шагов до начала приключения</p>
+            </div>
+            <div class="steps-grid">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <h3>Запусти Minecraft</h3>
+                    <p>Открой Minecraft Java Edition (1.20+) или Bedrock Edition</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <h3>Добавь сервер</h3>
+                    <p>В разделе "Сетевая игра" добавь новый сервер с адресом:</p>
+                    <div class="server-address">
+                        phobos.minecraft-hosting.net:25405
+                    </div>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <h3>Присоединяйся к Discord</h3>
+                    <p>Общение, помощь и всё самое важное происходит в нашем Discord</p>
+                    <a href="https://discord.gg/bPBe5sG3" class="step-discord-link" target="_blank">
+                        <i class="fab fa-discord"></i> Перейти в Discord
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Особенности -->
+    <section id="features" class="section features-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Почему именно 2x2x?</h2>
+                <p>Уникальные особенности нашего сервера</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-header">
+                        <div class="feature-icon">🌟</div>
+                        <h3>Дружелюбное сообщество</h3>
+                    </div>
+                    <p>Мы гордимся нашей welcoming атмосферой. Новые игроки всегда получают теплый прием и помощь от опытных участников.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-header">
+                        <div class="feature-icon">⚡</div>
+                        <h3>Стабильная работа</h3>
+                    </div>
+                    <p>Мощное железо обеспечивает бесперебойную работу сервера 24/7 без лагов и простоя.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-header">
+                        <div class="feature-icon">🛡️</div>
+                        <h3>Честная игра</h3>
+                    </div>
+                    <p>Строгие правила против читов и гриферства. Мы поддерживаем честную конкурентную среду.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-header">
+                        <div class="feature-icon">🎯</div>
+                        <h3>Активное развитие</h3>
+                    </div>
+                    <p>Регулярные ивенты, обновления и активное развитие сервера вместе с комьюнити.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Discord CTA -->
+    <section class="section discord-cta-section">
+        <div class="container">
+            <div class="discord-cta-card">
+                <div class="discord-content">
+                    <div class="discord-icon">
+                        <i class="fab fa-discord"></i>
+                    </div>
+                    <div class="discord-text">
+                        <h2>Всё общение происходит в Discord!</h2>
+                        <p>Присоединяйся к нашему сообществу, чтобы быть в курсе всех событий, получать помощь и общаться с другими игроками</p>
+                        <ul class="discord-benefits">
+                            <li><i class="fas fa-check"></i> Получай помощь от администрации</li>
+                            <li><i class="fas fa-check"></i> Узнавай о событиях первым</li>
+                            <li><i class="fas fa-check"></i> Общайся с другими игроками</li>
+                            <li><i class="fas fa-check"></i> Предлагай свои идеи для сервера</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="discord-action">
+                    <a href="https://discord.gg/bPBe5sG3" class="discord-join-btn" target="_blank">
+                        <i class="fab fa-discord"></i>
+                        Присоединиться к Discord
+                    </a>
+                    <p class="discord-note">Более 50+ активных участников!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Футер -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="logo">
+                        <span class="logo-icon">⚡</span>
+                        <span class="logo-text">2x2x</span>
+                    </div>
+                    <p>Ванильный Minecraft сервер с дружелюбным сообществом</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Быстрые ссылки</h4>
+                    <a href="#about">О сервере</a>
+                    <a href="#how-to-join">Как подключиться</a>
+                    <a href="https://discord.gg/bPBe5sG3" target="_blank">Discord</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Сервер</h4>
+                    <p><strong>Адрес:</strong> phobos.minecraft-hosting.net:25405</p>
+                    <p><strong>Версии:</strong> Java & Bedrock</p>
+                    <p><strong>Сезон:</strong> 1</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Сервер 2x2x. Не официальный проект Mojang.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
-
